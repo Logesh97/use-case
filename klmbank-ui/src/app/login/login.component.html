@@ -1,0 +1,14 @@
+<div class="login">
+    <form [formGroup] = "loginForm">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" formControlName="username" class="form-control" id="username" placeholder="user">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Username</label>
+            <input type="password" formControlName="password" class="form-control" id="password" placeholder="Password">
+        </div>
+      <input type="button" class="btn btn-primary" value ="sign on" (click) = "login()"/>
+    </form>
+</div>
+   
