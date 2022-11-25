@@ -12,6 +12,7 @@ import jwt_decode from 'jwt-decode';
 export class LoginComponent implements OnInit {
 
   loginForm:FormGroup;
+  loginStatus :boolean = false;
   constructor(private userService:UserService , private router : Router) { 
     this.loginForm = new FormGroup({
       username : new FormControl("",Validators.required),
@@ -30,8 +31,9 @@ export class LoginComponent implements OnInit {
             localStorage.setItem("token" , res['token']);
             localStorage.setItem("login-status" , JSON.stringify(decodeValue));
             // this.header.setAuthorMode(false);
+            this.loginStatus = true;
             if(JSON.parse(localStorage.getItem("login-status") || "")['sub']){
-              this.router.navigate(["home",JSON.parse(localStorage.getItem("login-status") || "")['sub']]);
+              this.router.navigate(["home"]);
             }
         },
         error : (err:any) => {

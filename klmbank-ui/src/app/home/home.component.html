@@ -1,1 +1,69 @@
-<p>home works!</p>
+<app-header [loginStatus]="loginStatus"></app-header>
+<h5 class="m-2">
+    Welcome 
+    <small class="text-muted">{{accountDetails.name}} !</small>
+</h5>
+<div class="container row g-2">
+    <div class="card col-auto m-3" >
+        <div class="card-body">
+          <h5 class="card-title">User Details</h5>
+          <h6 class="card-subtitle mb-2 text-muted">customer details listed below</h6>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row" >Name</th>
+                <td colspan="2">{{accountDetails.name}}</td>
+              </tr>
+              <tr>
+                <th scope="row" >Mail</th>
+                <td colspan="2">{{accountDetails.email}}</td>
+              </tr>
+              <tr>
+                <th scope="row" >D.O.B</th>
+                <td colspan="2">{{accountDetails.dateOfBirth}}</td>
+              </tr>
+              <tr>
+                <th scope="row" >Contact</th>
+                <td colspan="2">{{accountDetails.contactNumber}}</td>
+              </tr>
+              <tr>
+                <th scope="row" >PAN</th>
+                <td colspan="2">{{accountDetails.panNumber}}</td>
+              </tr>
+              <tr>
+                <th scope="row" >Address</th>
+                <td colspan="2">{{accountDetails.address}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <a routerLink="update-profile" class="btn btn-primary">update details</a>
+        </div>
+      </div>
+      <div class="card col-auto m-3">
+        <div class="card-body">
+            <h5 class="card-title">Account Details</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Account details listed below</h6>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th scope="row" >Account number</th>
+                  <td colspan="2" class="text-muted">{{accountDetails.accountNumber}}</td>
+                </tr>
+                <tr>
+                  <th scope="row" >Account type</th>
+                  <td colspan="2" class="text-muted">{{accountDetails.accountType}}</td>
+                </tr>
+                <tr>
+                  <th scope="row" >Balance</th>
+                  <td colspan="2">Rs.{{accountDetails.accountBalance}}</td>
+                </tr>
+                <tr>
+                    <th scope="row" >Branch</th>
+                    <td colspan="2">{{accountDetails.branchName}}</td>
+                  </tr>
+              </tbody>
+            </table>
+            <a routerLink="apply-loan" class="btn btn-primary">Apply loan</a>
+          </div>
+      </div>
+</div>

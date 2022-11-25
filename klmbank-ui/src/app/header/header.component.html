@@ -1,0 +1,28 @@
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="home">KLM BANK</a>
+      <div *ngIf="!loginStatus">
+        <button type="button" class="btn btn-primary gap-3" (click) = "logIn()">LogIn</button>
+        <button type="button" class="btn btn-success gap-3" (click) = "signUp()">SignUp</button>
+      </div>
+      <div *ngIf="loginStatus">
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/apply-loan">Apply Loan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/update-profile">update profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/all-transaction">All Transaction</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click) = "signout()" >Sign out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

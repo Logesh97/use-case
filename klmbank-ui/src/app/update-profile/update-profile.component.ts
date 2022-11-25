@@ -5,16 +5,16 @@ import { Router } from '@angular/router';
 import { UserService } from '../service/user.service';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-update-profile',
+  templateUrl: './update-profile.component.html',
+  styleUrls: ['./update-profile.component.css']
 })
-export class SignupComponent implements OnInit {
+export class UpdateProfileComponent implements OnInit {
 
-  loginStatus:boolean = false;
-  signUpForm:FormGroup;
+  loginStatus:boolean = localStorage.getItem("login-status") !== null;
+  updateProfileForm:FormGroup;
   constructor(private userService:UserService , private router:Router) { 
-    this.signUpForm = new FormGroup(
+    this.updateProfileForm = new FormGroup(
       {
         name : new FormControl("",Validators.required),
         email : new FormControl("",[Validators.required , Validators.email]),
@@ -30,18 +30,8 @@ export class SignupComponent implements OnInit {
     )
   }
 
-  sigup(){
-    console.log("sigup form value");
-    console.log(this.signUpForm.value);
-    this.userService.signup(this.signUpForm.value).subscribe({
-      next : (res:any) => {
-          console.log(res);
-          this.router.navigate(["login"]);
-      },
-      error : (err:any) => {
-        console.log("Error [LogInComponent][login] : ",err);
-      }
-    })
+  updateProfile(){
+
   }
 
   ngOnInit(): void {

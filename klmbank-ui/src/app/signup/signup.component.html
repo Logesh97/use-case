@@ -1,1 +1,67 @@
-<p>signup works!</p>
+<app-header [loginStatus]="loginStatus"></app-header>
+<div class="signup row g-1">
+    <div class="col-lg-6 mx-auto">
+        <form [formGroup] = "signUpForm" class="row g-3"> 
+            <div class="col-12">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" formControlName="name" class="form-control" id="name" placeholder="Name">
+            </div>
+            <div class="col-md-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" formControlName="email" class="form-control" id="email">
+            </div>
+            <div class="col-md-6">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" formControlName="username" class="form-control" id="username">
+            </div>
+            <div class="col-md-6">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" formControlName="password" class="form-control" id="password">
+            </div>
+            <div class="col-12">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" formControlName="address" class="form-control" id="address" placeholder="1234 Main St">
+            </div>
+            <div class="col-md-5">
+                <fieldset class="row mb-3">
+                    <label class="form-label">Account type</label>
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="form-check col-md-6">
+                              <input class="form-check-input" type="radio" formControlName="accountType" name="accountType" id="savings" value="savings" checked>
+                              <label class="form-check-label" for="savings">
+                                Savings
+                              </label>
+                            </div>
+                            <div class="form-check col-md-4">
+                              <input class="form-check-input" type="radio" formControlName="accountType" name="accountType" id="current" value="current">
+                              <label class="form-check-label" for="current">
+                                Current
+                              </label>
+                            </div>
+                        </div>
+                    </div>
+                  </fieldset>
+            </div>
+            <div class="col-md-3">
+                <label for="panNumber" class="form-label">PAN Number</label>
+                <input type="text" class="form-control" formControlName="panNumber" id="panNumber">
+            </div>
+            <div class="col-md-4">
+                <label for="branchName" class="form-label">Branch name</label>
+                <input type="text" class="form-control" formControlName="branchName" id="branchName">
+            </div>
+            <div class="col-md-6">
+                <label for="contactNumber" class="form-label">Contact Number</label>
+                <input type="text" class="form-control" formControlName="contactNumber" id="contactNumber">
+            </div>
+            <div class="col-6">
+                <label for="dateOfBirth" class="form-label">D.O.B</label>
+                <input class="form-control" formControlName="dateOfBirth" id="dateOfBirth" type="date" placeholder="dateOfBirth"/>
+              </div>
+            <div class="sticky-bottom ">
+                <button type="submit" class="col-12 btn btn-primary" (click) = "sigup()">Submit</button>
+            </div>
+            </form>
+    </div>
+</div>

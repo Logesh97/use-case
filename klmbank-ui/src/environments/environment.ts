@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiGateway : 'http://localhost:8081/api/v1/klmbank/'
+  apiGateway : 'http://localhost:9090/api/v1/klmbank/'
 };
 
 /*

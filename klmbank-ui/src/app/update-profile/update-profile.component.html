@@ -1,0 +1,38 @@
+<app-header [loginStatus]="loginStatus"></app-header>
+<div class="signup row g-1">
+    <div class="col-lg-6 mx-auto">
+        <form [formGroup] = "updateProfileForm" class="row g-3"> 
+            <div class="col-12">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" formControlName="name" class="form-control" id="name" placeholder="Name">
+            </div>
+            <div class="col-md-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" formControlName="email" class="form-control" id="email">
+            </div>
+            <div class="col-md-6">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" style="cursor: not-allowed;" formControlName="username" class="form-control" id="username" readonly>
+            </div>
+            <div class="col-md-6">
+                <label for="panNumber" class="form-label">PAN Number</label>
+                <input type="text" class="form-control" formControlName="panNumber" id="panNumber">
+            </div>
+            <div class="col-12">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" formControlName="address" class="form-control" id="address" placeholder="1234 Main St">
+            </div>
+            <div class="col-md-6">
+                <label for="contactNumber" class="form-label">Contact Number</label>
+                <input type="text" class="form-control" formControlName="contactNumber" id="contactNumber">
+            </div>
+            <div class="col-6">
+                <label for="dateOfBirth" class="form-label">D.O.B</label>
+                <input class="form-control" formControlName="dateOfBirth" id="dateOfBirth" type="date" placeholder="dateOfBirth"/>
+              </div>
+            <div class="sticky-bottom ">
+                <button type="submit" class="col-12 btn btn-primary" (click) = "updateProfile()">Submit</button>
+            </div>
+            </form>
+    </div>
+</div>
