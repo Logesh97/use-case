@@ -24,6 +24,7 @@ public class Customer implements UserDetails{
 	private String username;
 	private String password;
 	private String accountType;
+	private Double amount;
 	private String panNumber;
 	private String accountNumber;
 	private String branchName;
@@ -33,6 +34,34 @@ public class Customer implements UserDetails{
 	private LocalDate dateOfBirth;
 	
 	
+	public Customer(Long customerId, String name, String username, String password, String accountType, Double amount,
+			String panNumber, String accountNumber, String branchName, String email, String address,
+			String contactNumber, LocalDate dateOfBirth) {
+		
+		super();
+		this.customerId = customerId;
+		this.name = name;
+		this.username = username;
+		this.password = password;
+		this.accountType = accountType;
+		this.amount = amount;
+		this.panNumber = panNumber;
+		this.accountNumber = accountNumber;
+		this.branchName = branchName;
+		this.email = email;
+		this.address = address;
+		this.contactNumber = contactNumber;
+		this.dateOfBirth = dateOfBirth;
+	}
+	public Customer() {
+		
+	}
+	public Double getAmount() {
+		return amount;
+	}
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
 	public Long getCustomerId() {
 		return customerId;
 	}

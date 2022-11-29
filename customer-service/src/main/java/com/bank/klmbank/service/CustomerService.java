@@ -40,6 +40,7 @@ public class CustomerService {
 		} else if(findByUsername(customer.getUsername()) != null) {
 			throw new CustomerException("Username already registered!");
 		}
+		customer.setAmount(1000.00);
 		customer.setAccountNumber(getAccountNumber(customer.getBranchName()));
 		customer.setPassword(passwordUtil.encodePassword(customer.getPassword()));
 		return customerRepository.save(customer);
@@ -52,7 +53,7 @@ public class CustomerService {
 		do {
 			accountNumber = branchName.substring(0 , 4)
 					.toUpperCase()
-					.concat(String.format("%7d", count++));
+					.concat(String.format("%07d", ++count));
 			customer = customerRepository.findByAccountNumber(accountNumber);
 		}while(customer != null);
 		return accountNumber;

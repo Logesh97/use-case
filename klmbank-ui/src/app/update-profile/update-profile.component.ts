@@ -21,6 +21,7 @@ export class UpdateProfileComponent implements OnInit {
    initForm(){
     return new FormGroup(
       {
+        customerId : new FormControl("",Validators.required),
         name : new FormControl("",Validators.required),
         email : new FormControl("",[Validators.required , Validators.email]),
         username : new FormControl("",Validators.required),
@@ -38,6 +39,7 @@ export class UpdateProfileComponent implements OnInit {
   setFormValue(account: Account){
     this.updateProfileForm.setValue(
       {
+        customerId : account.customerId,
         name : account.name,
         email : account.email,
         username : account.username,
@@ -55,8 +57,8 @@ export class UpdateProfileComponent implements OnInit {
   updateProfile(){
     console.log("update profile form value");
     console.log(this.updateProfileForm.value);
-    this.userService.signup(this.updateProfileForm.value).subscribe({
-      next : (res:any) => {
+    this.userService.updateProfile(this.updateProfileForm.value).subscribe({
+      next : (res:any) => { 
           console.log(res);
           this.router.navigate(["home"]);
       },

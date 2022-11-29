@@ -20,6 +20,12 @@ export class UserService{
         let signUpUrl = this.apiUrl+"/register";
         return this.http.post(signUpUrl , account);
     }
+    updateProfile(account: Account) {
+        let url = this.apiUrl+"/updateProfile";
+        return this.http.put(url,account ,{headers : {
+            "Authorization" : "Bearer "+ localStorage.getItem('token')
+        }});
+    }
     
     login(user:User){
         let loginUrl = this.apiUrl+"/login";
