@@ -8,4 +8,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
 	Customer findByUsername(String username);
 
+	Customer findByAccountNumber(String accountNumber);
+
 }

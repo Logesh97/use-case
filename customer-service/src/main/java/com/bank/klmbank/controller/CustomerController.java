@@ -9,14 +9,18 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bank.klmbank.advice.CustomerException;
 import com.bank.klmbank.model.Customer;
 import com.bank.klmbank.model.JwtResponse;
+import com.bank.klmbank.model.LoanRequest;
+import com.bank.klmbank.model.Transaction;
 import com.bank.klmbank.service.CustomerService;
 import com.bank.klmbank.utils.JwtTokenUtil;
 
@@ -39,9 +43,27 @@ public class CustomerController {
 		return customerService.getAllCustomers();
 	}
 	
+	@GetMapping("/{customerId}")
+	public Customer getAllCustomerById(@PathVariable Long customerId){
+		return customerService.getCustomerById(customerId);
+	}
+	
+	@GetMapping("/all-transaction/{customerId}")
+	public List<Transaction> getAllTransactionByCustomerId(@PathVariable Long customerId){
+		return customerService.getAllTransactionByCustomerId(customerId);
+	}
+	
 	@PutMapping("/updateProfile")
 	public Customer updateProfile(@RequestBody Customer customer) {
 		return customerService.updateProfile(customer);
+	}
+	
+	@PostMapping("/apply-loan")
+	public Transaction ApplyLoan(@RequestBody LoanRequest loanRequest) {
+		if(loanRequest.getRequestAmount() == null || loanRequest.getRequestAmount() < 100) {
+			throw new CustomerException("Invalid amount requested!");
+		}
+		return customerService.applyLoan(loanRequest);
 	}
 	
 	@PostMapping("/register")

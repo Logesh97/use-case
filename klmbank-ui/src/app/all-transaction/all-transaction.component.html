@@ -1,2 +1,25 @@
 <app-header [loginStatus]="loginStatus"></app-header>
-<p>all-transaction works!</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Transaction ID</th>
+            <th scope="col">Account Number</th>
+            <th scope="col">Transaction Type</th>
+            <th scope="col">Transaction Amount</th>
+            <th scope="col">Transaction status</th>
+          </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let transaction of transactions; let id = index;">
+        <th scope="col">{{id}}</th>
+        <td class="text-muted">{{transaction.transactionId}}</td>
+        <td class="text-muted">{{transaction.accountNumber}}</td>
+        <td class="text-muted">{{transaction.transactionType}}</td> 
+        <td class="text-muted">{{transaction.amount}}</td>
+        <td class="text-muted">{{transaction.transactionStatus}}</td>
+      </tr>
+    </tbody>
+  </table>

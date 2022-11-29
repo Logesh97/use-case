@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
         name : new FormControl("",Validators.required),
         email : new FormControl("",[Validators.required , Validators.email]),
         username : new FormControl("",Validators.required),
-        password : new FormControl("",[Validators.required , Validators.minLength(8)]),
+        password : new FormControl("",[Validators.required , Validators.maxLength(8)]),
         address: new FormControl("",Validators.required),
         accountType:new FormControl("savings",Validators.required),
         panNumber:new FormControl("",Validators.required),
@@ -39,7 +39,7 @@ export class SignupComponent implements OnInit {
           this.router.navigate(["login"]);
       },
       error : (err:any) => {
-        console.log("Error [LogInComponent][login] : ",err);
+        console.log("Error [SignUpComponent][signUp] : ",err);
       }
     })
   }

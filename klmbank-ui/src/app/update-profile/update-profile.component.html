@@ -1,5 +1,10 @@
 <app-header [loginStatus]="loginStatus"></app-header>
-<div class="signup row g-1">
+
+<div class="alert alert-danger" role="alert" *ngIf = "updateProfileForm.invalid" >
+    Enter valid inputs!
+</div> 
+
+<div class="row g-1">
     <div class="col-lg-6 mx-auto">
         <form [formGroup] = "updateProfileForm" class="row g-3"> 
             <div class="col-12">
@@ -31,7 +36,7 @@
                 <input class="form-control" formControlName="dateOfBirth" id="dateOfBirth" type="date" placeholder="dateOfBirth"/>
               </div>
             <div class="sticky-bottom ">
-                <button type="submit" class="col-12 btn btn-primary" (click) = "updateProfile()">Submit</button>
+                <button type="submit" [disabled] = "updateProfileForm.invalid" class="col-12 btn btn-primary" (click) = "updateProfile()">Submit</button>
             </div>
             </form>
     </div>

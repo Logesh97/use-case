@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../service/user.service';
 import jwt_decode from 'jwt-decode';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +11,13 @@ import jwt_decode from 'jwt-decode';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm:FormGroup;
+  loginForm:FormGroup = new FormGroup({
+    username : new FormControl("",Validators.required),
+    password : new FormControl("",[Validators.required , Validators.maxLength(8)])
+  });
   loginStatus :boolean = false;
   constructor(private userService:UserService , private router : Router) { 
-    this.loginForm = new FormGroup({
-      username : new FormControl("",Validators.required),
-      password : new FormControl("",[Validators.required , Validators.minLength(8)])
-    })
+    
   }
 
   login(){

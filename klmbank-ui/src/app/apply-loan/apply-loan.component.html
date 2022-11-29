@@ -1,2 +1,21 @@
 <app-header [loginStatus]="loginStatus"></app-header>
-<p>apply-loan works!</p>
+
+<div class="alert alert-danger" role="alert" *ngIf = "loanApplication.invalid" >
+    Enter valid inputs!
+</div>
+
+<div class="apply-loan row">
+    <div class="col-lg-6 mx-auto">
+        <form [formGroup] = "loanApplication">
+            <div class="mb-3">
+                <label for="customerId" class="form-label">customerId</label>
+                <input type="text" formControlName="customerId" class="form-control" id="customerId">
+            </div>
+            <div class="mb-3">
+                <label for="requestAmount" class="form-label">Amount</label>
+                <input type="requestAmount" formControlName="requestAmount" class="form-control" id="requestAmount" placeholder="Amount you need">
+            </div>
+          <input type="button" [disabled] = "loanApplication.invalid" class="btn btn-primary" value ="Apply loan" (click) = "applyLoan()"/>
+        </form>
+    </div>
+</div>

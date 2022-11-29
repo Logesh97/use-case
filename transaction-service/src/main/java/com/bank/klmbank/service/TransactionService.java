@@ -1,6 +1,7 @@
 package com.bank.klmbank.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,13 @@ public class TransactionService {
 		}catch(Exception exception) {
 			throw exception;
 		}
+	}
+
+	public List<Transaction> getAllTransactionsByCustomerId(Long customerId) {
+		List<Transaction> allTransactions = getAllTransactions();
+		return allTransactions.stream()
+				.filter(transaction -> transaction.getCustomerId() == customerId)
+				.collect(Collectors.toList());
 	}
 	
 	

@@ -10,8 +10,9 @@ import { UserService } from '../service/user.service';
 })
 export class HomeComponent implements OnInit {
 
-  loginStatus:boolean = localStorage.getItem("login-status") !== null;
   accountDetails:any;
+  loginDetail:any = localStorage.getItem("login-status");
+  loginStatus:boolean = this.loginDetail !== null;
   constructor(private router:Router , private userService:UserService) { 
   
   }
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
       this.router.navigate(["login"]);
     }else{
       customerId = JSON.parse(localStorage.getItem("login-status") || "{}")['customerId'];
-      this.userService.getAccountDetailsByCustomerId(customerId).subscribe({
+      this.userService.getAccountDetailsByCustomerId(JSON.parse(localStorage.getItem("login-status") || "{}")['customerId']).subscribe({
         next : (res:any) => {
             console.log(res);
             this.accountDetails = res;

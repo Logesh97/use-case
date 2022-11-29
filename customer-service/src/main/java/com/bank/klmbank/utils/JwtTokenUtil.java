@@ -53,7 +53,7 @@ public class JwtTokenUtil implements Serializable {
 		claims.put("message", "login success");
 		claims.put("status",true);
 		claims.put("mailId",customerByUsername.getEmail());
-		claims.put("authorId",customerByUsername.getCustomerId());
+		claims.put("customerId",customerByUsername.getCustomerId());
 		return doGenerateToken(claims, customerByUsername.getUsername());
 	}
 
