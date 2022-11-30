@@ -37,7 +37,7 @@ public class CustomerService {
 		} else if(customer.getUsername() != null &&
 				customer.getUsername().isEmpty() ) {
 			throw new CustomerException("Username of the customer not found!!");
-		} else if(findByUsername(customer.getUsername()) != null) {
+		} else if(this.findByUsername(customer.getUsername()) != null) {
 			throw new CustomerException("Username already registered!");
 		}
 		customer.setAmount(1000.00);
