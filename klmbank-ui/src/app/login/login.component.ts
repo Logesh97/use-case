@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   loginForm:FormGroup = new FormGroup({
     username : new FormControl("",Validators.required),
-    password : new FormControl("",[Validators.required , Validators.maxLength(8)])
+    password : new FormControl("",[Validators.required , Validators.maxLength(7)])
   });
   loginStatus :boolean = false;
   constructor(private userService:UserService , private router : Router) { 

@@ -23,9 +23,9 @@ export class SignupComponent implements OnInit {
         address: new FormControl("",Validators.required),
         accountType:new FormControl("savings",Validators.required),
         panNumber:new FormControl("",Validators.required),
-        branchName:new FormControl("",Validators.required),
+        branchName:new FormControl("CHENNAI",[Validators.required , Validators.minLength(5)]),
         contactNumber:new FormControl("",Validators.required),
-        dateOfBirth:new FormControl(formatDate(Date.now() , 'yyyy-MM-dd','en') , Validators.required),
+        dateOfBirth:new FormControl(formatDate(Date.now() , 'yyyy-MM-dd','en') , [Validators.required]),
       }
     )
   }

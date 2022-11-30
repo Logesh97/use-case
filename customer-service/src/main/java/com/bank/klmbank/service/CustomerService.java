@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import com.bank.klmbank.advice.CustomerException;
@@ -26,6 +27,9 @@ public class CustomerService {
 	
 	@Autowired
 	TransactionClient transactionClient;
+	
+	@Autowired
+	KafkaTemplate<String, Transaction> kafkaTemplate;
 
 	public Customer findByUsername(String username) {
 		return customerRepository.findByUsername(username);
@@ -114,7 +118,9 @@ public class CustomerService {
 		}else {
 			throw new CustomerException("Invalid customerId requested!");
 		}
-		return transactionClient.applyLoan(loanRequest);
+		Transaction transaction  = transactionClient.applyLoan(loanRequest);
+		kafkaTemplate.send("klm-bankdata" , transaction);
+		return transaction;
 	}
 
 }
